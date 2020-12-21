@@ -1,0 +1,30 @@
+#use-added-syntax(esir)
+defpackage design-generator :
+  import core
+  import collections
+  import math
+  import esir
+  import esir/utils
+  import esir/gen
+  import esir/repl-lib
+  import jitpcb/visualizer
+  
+  import ocdb/tests/default-harness
+  import ocdb/generic-components
+  
+pcb-module my-design :
+  ; 1k Resistor from database
+  inst r : {chip-resistor(1.0e3)}
+
+val main-design = default-board(my-design, 4, 25.0, 10.0)
+
+view(main-design)
+
+export-kicad("generated-kicad", [ `place => true 
+                                  `gen-board => true 
+                                  `gen-bom => true 
+                                  `gen-schematic => true 
+                                  `paper => ANSI-A4
+                                  `fresh => true 
+                                  `schematic-version => 4
+                                  `param-configs => [`sketch]] )
