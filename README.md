@@ -1,24 +1,43 @@
-# Starting a JITX design
+# Getting started with a JITX Design
 
-Clone this repository, or use the 'Use this template' button to create a new repository (then clone that one)
+Clone this template repository:
 
-To initialize:
 ```
-cd design-template
-git submodule update --init
+git clone --recursive git@github.com:JITx-Inc/design-template.git .
 ```
 
-Now you can run the design generator:
+Open the REPL:
+
+![Open the Repl](https://raw.githubusercontent.com/JITx-Inc/jitpcb-vscode-resources/feature/JITX-279/improve-gif/repl.gif)
+
+alternatively:
+
 ```
-jitpcb repl design-generator.stanza
+jitx repl
 ```
 
-# Library management
+Load your design
 
-This repo will keep your library code in step with your design. For managing the version of open-components-database, treat it like any other git repository:
 ```
+stanza> load "design-generator.stanza"
+```
+
+# Library Management
+
+This repo will keep your library code in step with your design using git submodules. For managing the version of `open-components-database` (OCDB), you must manually update the hash.
+
+```bash
 cd open-components-database
 git checkout master
 git pull
 ```
-You can also add your own design libraries (as submodules if you wish), and link them in by editing `stanza.proj` to include them.
+
+You can also add your own design libraries and link them in by editing the `stanza.proj` file to include them. 
+
+
+# Additional Resources:
+
+- [Stanza Cheat Sheet](https://docs.jitx.com/stanza.html)
+- [Stanza By Example](http://lbstanza.org/stanzabyexample.html)
+- [Running your first design](https://docs.jitx.com/learn-jitpcb/first-design.html)
+- [JITX Reference](https://docs.jitx.com/reference/SUMMARY.html)
