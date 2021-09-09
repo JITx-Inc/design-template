@@ -1,16 +1,22 @@
 # Getting started with a JITX Design
 
-Clone this template repository:
+Select the green `Use This Template` button towards the top of this page and create a new repository. If you do not see this button, sign into git.
+
+Name your repository, select private or public, and select `Create repository from template` The repository will be created.
+
+Select the green `Code` button and select the little clipboard icon to copy the repository source location
+
+In a terminal window on your machine, clone your repository by typing `git clone --recursive ` and pasting the location you copied:
 
 ```
-git clone --recursive git@github.com:JITx-Inc/design-template.git .
+git clone --recursive git@github.com:<username>/<repository>.git .
 ```
 
-Open the REPL:
+Open VSCode and select `File` then `Open Folder...` and open the folder location of the repository.
 
-![Open the Repl](https://raw.githubusercontent.com/JITx-Inc/jitpcb-vscode-resources/feature/JITX-279/improve-gif/repl.gif)
+In VSCode, select `Terminal` then `New Terminal`
 
-alternatively:
+In the terminal window in VSCode, type:
 
 ```
 jitx repl
@@ -37,7 +43,7 @@ You can also add your own design libraries and link them in by editing the `stan
 
 # Additional Resources:
 
+- [Running your first design](https://docs.jitx.com/learn-jitpcb/first-design.html)
 - [Stanza Cheat Sheet](https://docs.jitx.com/stanza.html)
 - [Stanza By Example](http://lbstanza.org/stanzabyexample.html)
-- [Running your first design](https://docs.jitx.com/learn-jitpcb/first-design.html)
 - [JITX Reference](https://docs.jitx.com/reference/SUMMARY.html)
