@@ -9,7 +9,7 @@ defpackage first-design :
 pcb-module my-design :
   public inst r : chip-resistor(1.0e3)
 
-make-default-board(my-design, 4, 25.0, 10.0)
+make-default-board(my-design, 4, Rectangle(25.0, 10.0))
 
 ; Export CAD with default options
 export-cad()
