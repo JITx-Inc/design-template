@@ -6,31 +6,26 @@ Name your repository, select private or public, and select `Create repository fr
 
 Select the green `Code` button and select the little clipboard icon to copy the repository source location
 
-In a terminal window on your machine, clone your repository by typing `git clone --recursive ` and pasting the location you copied:
+In a terminal window on your machine, clone your repository by typing `git clone --recursive ` and paste in the location you copied. The command should look like this:
 
 ```
 git clone --recursive git@github.com:<username>/<repository>.git .
 ```
 
-Open VSCode and select `File` then `Open Folder...` and open the folder location of the repository.
+Open VSCode and select `File` then `Open Folder...` and open the folder location of the repository. Setting this directory in VSCode allows features like Go-to definition and Autocomplete to work.
 
 In VSCode, select `Terminal` then `New Terminal`
 
 In the terminal window in VSCode, type:
 
 ```
-jitx repl
+jitx repl design-generator.stanza
 ```
 
-Load your design
-
-```
-stanza> load "design-generator.stanza"
-```
 
 # Library Management
 
-This repo will keep your library code in step with your design using git submodules. For managing the version of `open-components-database` (OCDB), you must manually update the hash.
+This repo will keep your library code in step with your design using git submodules. For managing the version of `open-components-database` (OCDB), you must update it manually using Git:
 
 ```bash
 cd open-components-database
