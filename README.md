@@ -1,6 +1,6 @@
 # Getting started with a JITX Design
 
-Select the green `Use This Template` button towards the top of this page and create a new repository. If you do not see this button, sign into git.
+Select the green `Use This Template` button towards the top of this page and create a new repository. If you do not see this button, sign into GitHub.
 
 Name your repository, select private or public, and select `Create repository from template` The repository will be created.
 
