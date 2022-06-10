@@ -1,22 +1,49 @@
 #use-added-syntax(jitx)
-defpackage first-design :
+defpackage design-template :
   import core
   import jitx
   import jitx/commands
-  import ocdb/defaults
-  import ocdb/generic-components
 
+; =========================
+; Module to run as a design
+; ==========================
+val board-shape = RoundedRectangle(30.0, 18.5, 0.25)
 pcb-module my-design :
-  public inst r : chip-resistor(1.0e3)
 
-make-default-board(my-design, 4, Rectangle(25.0, 10.0))
+  inst version-label  : ocdb/board-text/version-silkscreen("REV 0.0.0")
+  place(version-label) at loc(0.0, height(board-shape) / 2.0 - 1.0) on Bottom
+  
+; ========================================
+; Configure the design and view the result
+; ========================================
+defn run-design (circuit:Instantiable, outline:Shape) :
+  set-design-directory("CAD")
 
-; Export CAD with default options
-; export-cad()
+  set-main-module(circuit) ; Treat the provided module as a design, and compile it.
 
-; Show the Schematic and PCB for the design
-view-board()
-view-schematic()
+  set-board(ocdb/defaults/default-board(ocdb/stackups/jlcpcb-jlc2313, outline))
+  set-rules(ocdb/rules/jlcpcb-rules)
 
-; Print the MPN of the resistor from the design
-; println(mpn?(my-design.r))
+  run-checks("checks.txt")
+  view-board()
+  view-schematic()
+
+; ====================
+; Export design to CAD
+; ====================
+defn export-design () :
+  set-paper(ANSI-A4)
+  set-export-backend(`kicad)
+  export-cad()
+
+; ===================================
+; Update CAD, keeping layout progress
+; ===================================
+defn update-design () :
+  set-export-board?(false)
+  export-design()
+
+; ============
+; Run the code
+; ============
+run-design(my-design, board-shape)
