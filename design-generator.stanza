@@ -4,6 +4,7 @@ defpackage design-template :
   import core
   import jitx
   import jitx/commands
+  import ocdb/generic-components
 
 ; =========================
 ; Module to run as a design
@@ -34,7 +35,7 @@ defn run-design (circuit:Instantiable, outline:Shape) :
 ; ====================
 defn export-design () :
   set-paper(ANSI-A4)
-  set-export-backend(`kicad)
+  set-export-backend(`altium)
   export-cad()
 
 ; ===================================
