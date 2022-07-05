@@ -3,6 +3,7 @@ defpackage design-template :
   import core
   import jitx
   import jitx/commands
+  import ocdb/generic-components
 
 ; =========================
 ; Module to run as a design
@@ -10,7 +11,7 @@ defpackage design-template :
 val board-shape = RoundedRectangle(30.0, 18.5, 0.25)
 pcb-module my-design :
 
-  inst version-label  : ocdb/board-text/version-silkscreen("REV 0.0.0")
+  inst version-label  : ocdb/board-text/version-silkscreen("Verison 0.0")
   place(version-label) at loc(0.0, height(board-shape) / 2.0 - 1.0) on Bottom
   
 ; ========================================
