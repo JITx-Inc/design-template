@@ -35,6 +35,7 @@ defn run-design (circuit:Instantiable, outline:Shape) :
 defn export-design () :
   set-paper(ANSI-A4)
   set-export-backend(`altium)
+  export-bom()
   export-cad()
 
 ; ===================================
