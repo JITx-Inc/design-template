@@ -44,6 +44,15 @@ defn update-design () :
   set-export-board?(false)
   export-design()
 
+; =================
+; Export BOM to csv
+; =================
+
+defn export-bill-of-materials () :
+  set-bom-vendors(ocdb/design-vars/APPROVED-DISTRIBUTOR-LIST)
+  set-bom-design-quantity(ocdb/design-vars/DESIGN-QUANTITY)
+  export-bom()
+
 ; ============
 ; Run the code
 ; ============
