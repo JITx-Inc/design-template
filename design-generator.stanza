@@ -15,27 +15,35 @@ pcb-module my-design :
   inst version-label  : ocdb/board-text/version-silkscreen("Version 0.0")
   place(version-label) at loc(0.0, height(board-shape) / 2.0 - 1.0) on Bottom
   
-; ========================================
-; Configure the design and view the result
-; ========================================
-defn run-design (circuit:Instantiable, check?:True|False) :
+; ==========================================
+; Configure the design, then run or check it
+; ==========================================
+defn run-design (circuit:Instantiable, run-checks?:True|False) :
   set-design-directory("CAD")
-
   set-board(ocdb/defaults/default-board(ocdb/stackups/jlcpcb-jlc2313, board-shape))
   set-rules(ocdb/rules/jlcpcb-rules)
 
-  if check? :
-    val analyzed-design = ocdb/generator-utils/run-final-passes(circuit)
-    set-main-module(analyzed-design) ; Treat the provided module as a design, and compile it.
+  var main-module = circuit
+  if run-checks? :
+    main-module = ocdb/generator-utils/run-final-passes(circuit) ; Analyze design with a pass
+  
+  set-main-module(main-module) ; Treat the provided module as a design, and compile it.
+  
+  if run-checks? :
     run-checks("checks.txt")
   else:  
-    set-main-module(circuit) ; Treat the provided module as a design, and compile it.
     view-board()
     view-schematic()
 
-defn run-design (circuit:Instantiable) :
+; ====================================
+; Compile the design, view the results
+; ====================================
+defn compile-design (circuit:Instantiable) :
   run-design(circuit, false)
 
+; =====================
+; Run the design checks
+; =====================
 defn check-design (circuit:Instantiable) :
   run-design(circuit, true)
 
@@ -65,4 +73,4 @@ defn export-bill-of-materials () :
 ; ============
 ; Run the code
 ; ============
-run-design(my-design)
+compile-design(my-design)
