@@ -63,7 +63,7 @@ defn update-design () :
   export-design()
 
 ; =================
-; Export BOM to csv
+; Export BOM to tsv
 ; =================
 defn export-bill-of-materials () :
   set-bom-vendors(ocdb/design-vars/APPROVED-DISTRIBUTOR-LIST)
