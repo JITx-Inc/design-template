@@ -4,7 +4,9 @@ defpackage design-template :
   import core
   import jitx
   import jitx/commands
+  import ocdb/checks
   import ocdb/generic-components
+  import ocdb/tolerance
 
 ; =========================
 ; Module to run as a design
