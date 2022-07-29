@@ -8,10 +8,15 @@ defpackage design-template :
   import ocdb/generic-components
   import ocdb/tolerance
 
-; =========================
-; Module to run as a design
-; ==========================
+; ==========================================
+; Implement other modules used by our design 
+; ==========================================
+
+; =======================================
+; Implement the module to run as a design
+; =======================================
 val board-shape = RoundedRectangle(30.0, 18.5, 0.25)
+
 pcb-module my-design :
 
   inst version-label  : ocdb/board-text/version-silkscreen("Version 0.0")
