@@ -38,7 +38,8 @@ You can also add your own design libraries and link them in by editing the `stan
 
 # Additional Resources:
 
-- [Running your first design](https://docs.jitx.com/tutorials/first-design.html)
-- [Stanza Cheat Sheet](https://docs.jitx.com/stanza.html)
+- [Your first JITX design](https://docs.jitx.com/tutorials/quickstart-1.html)
+- [JITX Patterns Cheat Sheet](https://docs.jitx.com/reference/jitx-cheat-sheet.html)
+- [Stanza Cheat Sheet](https://docs.jitx.com/reference/stanza.html)
 - [Stanza By Example](http://lbstanza.org/stanzabyexample.html)
 - [JITX Reference](https://docs.jitx.com/reference/SUMMARY.html)
