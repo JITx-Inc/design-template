@@ -8,6 +8,10 @@ defpackage design-template :
   import ocdb/generic-components
   import ocdb/tolerance
 
+; ==========================================
+; Implement other modules used by our design 
+; ==========================================
+
 ; =========================
 ; Module to run as a design
 ; ==========================
