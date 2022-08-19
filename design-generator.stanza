@@ -4,9 +4,9 @@ defpackage design-template :
   import core
   import jitx
   import jitx/commands
-  import ocdb/checks
-  import ocdb/generic-components
-  import ocdb/tolerance
+  import ocdb/utils/checks
+  import ocdb/utils/generic-components
+  import ocdb/utils/tolerance
 
 ; ==========================================
 ; Implement other modules used by our design 
@@ -18,7 +18,7 @@ defpackage design-template :
 val board-shape = RoundedRectangle(30.0, 18.5, 0.25)
 pcb-module my-design :
 
-  inst version-label  : ocdb/board-text/version-silkscreen("Version 0.0")
+  inst version-label  : ocdb/artwork/board-text/version-silkscreen("Version 0.0")
   place(version-label) at loc(0.0, height(board-shape) / 2.0 - 1.0) on Bottom
   
 ; ==========================================
@@ -26,12 +26,12 @@ pcb-module my-design :
 ; ==========================================
 defn run-design (circuit:Instantiable, run-checks?:True|False) :
   set-design-directory("CAD")
-  set-board(ocdb/defaults/default-board(ocdb/stackups/jlcpcb-jlc2313, board-shape))
-  set-rules(ocdb/rules/jlcpcb-rules)
+  set-board(ocdb/utils/defaults/default-board(ocdb/manufacturers/stackups/jlcpcb-jlc2313, board-shape))
+  set-rules(ocdb/manufacturers/rules/jlcpcb-rules)
 
   var main-module = circuit
   if run-checks? :
-    main-module = ocdb/generator-utils/run-final-passes(circuit) ; Analyze design with a pass
+    main-module = ocdb/utils/generator-utils/run-final-passes(circuit) ; Analyze design with a pass
   
   set-main-module(main-module) ; Treat the provided module as a design, and compile it.
   
@@ -72,8 +72,8 @@ defn update-design () :
 ; Export BOM to tsv
 ; =================
 defn export-bill-of-materials () :
-  set-bom-vendors(ocdb/design-vars/APPROVED-DISTRIBUTOR-LIST)
-  set-bom-design-quantity(ocdb/design-vars/DESIGN-QUANTITY)
+  set-bom-vendors(ocdb/utils/design-vars/APPROVED-DISTRIBUTOR-LIST)
+  set-bom-design-quantity(ocdb/utils/design-vars/DESIGN-QUANTITY)
   export-bom()
 
 ; ============
