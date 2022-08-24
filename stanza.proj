@@ -1,2 +1,4 @@
 include "open-components-database/stanza.proj"
+
 package design-template defined-in "design-generator.stanza"
+packages components/* defined-in "components"
