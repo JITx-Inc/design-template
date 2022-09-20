@@ -6,7 +6,6 @@ defpackage design-template :
   import jitx/commands
   import ocdb/utils/checks
   import ocdb/utils/generic-components
-  import ocdb/utils/tolerance
 
 ; ==========================================
 ; Implement other modules used by our design 
