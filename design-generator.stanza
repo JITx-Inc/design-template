@@ -56,7 +56,7 @@ defn check-design (circuit:Instantiable) :
 ; ====================
 ; Actual Export design
 ; ====================
-defn imp-export-design () :
+defn export-to-cad () :
   set-paper(ANSI-A4)
   set-export-backend(`altium)
   export-cad()
@@ -66,14 +66,14 @@ defn imp-export-design () :
 ; ====================
 defn export-design () :
   set-export-board?(true)
-  imp-export-design()
+  export-to-cad()
 
 ; ===================================
 ; Update CAD, keeping layout progress
 ; ===================================
 defn update-design () :
   set-export-board?(false)
-  imp-export-design()
+  export-to-cad()
 
 ; =================
 ; Export BOM to tsv
