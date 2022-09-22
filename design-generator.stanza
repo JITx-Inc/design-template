@@ -53,19 +53,26 @@ defn check-design (circuit:Instantiable) :
   run-design(circuit, true)
 
 ; ====================
-; Export design to CAD
+; Actual Export design
 ; ====================
-defn export-design () :
+defn export-to-cad () :
   set-paper(ANSI-A4)
   set-export-backend(`altium)
   export-cad()
+
+; ====================
+; Export design to CAD
+; ====================
+defn export-design () :
+  set-export-board?(true)
+  export-to-cad()
 
 ; ===================================
 ; Update CAD, keeping layout progress
 ; ===================================
 defn update-design () :
   set-export-board?(false)
-  export-design()
+  export-to-cad()
 
 ; =================
 ; Export BOM to tsv
