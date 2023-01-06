@@ -37,9 +37,9 @@ defn run-design (circuit:Instantiable, run-checks?:True|False) :
   if run-checks? :
     run-checks("checks.txt")
   else:
-    view-design-explorer()
     view-board()
     view-schematic()
+    view-design-explorer()
 
 ; ====================================
 ; Compile the design, view the results
