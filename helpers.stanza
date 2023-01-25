@@ -14,8 +14,7 @@ defpackage helpers :
 ; Run the design checks
 ; =====================
 public defn run-check-on-design (circuit:Instantiable) :
-  var main-module = circuit
-  main-module = ocdb/utils/generator-utils/run-final-passes(circuit) ; Analyze design with a pass
+  val main-module = ocdb/utils/generator-utils/run-final-passes(circuit) ; Analyze design with a pass
   set-main-module(main-module) ; Treat the provided module as a design, and compile it.
   run-checks("checks.txt")
 
@@ -24,7 +23,7 @@ public defn run-check-on-design (circuit:Instantiable) :
 ; ====================
 public defn export-to-cad () :
   set-paper(ANSI-A4)
-  set-export-backend(`altium)
+  set-export-backend(`altium) ; set the CAD software for export to be altium (also supported: `kicad)
   export-cad()
 
 ; ====================
