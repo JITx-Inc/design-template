@@ -4,10 +4,10 @@ defpackage main :
   import core
   import jitx
   import jitx/commands
-  import ocdb/utils/checks
   import ocdb/utils/generic-components
   import helpers
 
+; Define the shape/size of the board
 val board-shape = RoundedRectangle(30.0, 18.5, 0.25)
 
 ; Setup the board
@@ -17,6 +17,15 @@ defn setup-board () :
 
 ; Module to run as a design
 pcb-module my-design :
+  ; define some pins/ports
+  pin gnd
+  pin power-5v
+  pin signal
+
+  ; Create a 10k resistor component
+  res-strap(power-5v, signal, 10.0e3)
+
+  ; Write the board version on silkscreen
   inst version-label  : ocdb/artwork/board-text/version-silkscreen("Version 0.0")
   place(version-label) at loc(0.0, height(board-shape) / 2.0 - 1.0) on Bottom
 
