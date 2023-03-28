@@ -30,7 +30,9 @@ pcb-module my-design :
   place(version-label) at loc(0.0, height(board-shape) / 2.0 - 1.0) on Bottom
 
 ; Run the code
-set-design-directory("CAD") ;set the directory where the generated output will be placed
+; Set the design name
+; A directory named after this will be generated under "designs"
+set-current-design("jitx-design")
 setup-board()
 set-main-module(my-design)
 
