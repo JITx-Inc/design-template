@@ -33,7 +33,7 @@ pcb-module my-design :
 set-current-design("jitx-design")
 
 ; Set the schematic sheet size
-set-paper(ANSI-A5)
+set-paper(ANSI-A)
 
 ; Setup the board properties
 setup-board()
