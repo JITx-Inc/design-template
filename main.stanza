@@ -29,14 +29,19 @@ pcb-module my-design :
   inst version-label  : ocdb/artwork/board-text/version-silkscreen("Version 0.0")
   place(version-label) at loc(0.0, height(board-shape) / 2.0 - 1.0) on Bottom
 
-; Run the code
-; Set the design name
-; A directory named after this will be generated under "designs"
+; Set the design name - a directory with this name will be generated under the "designs" directory
 set-current-design("jitx-design")
+
+; Set the schematic sheet size
+set-paper(ANSI-A)
+
+; Setup the board properties
 setup-board()
+
+; Set the top level module (the module to be compile into a schematic and PCB)
 set-main-module(my-design)
 
-; Use a helper function from helpers.stanza (use any helper function here)
+; Use any helper function from helpers.stanza here
 ; run-check-on-design(my-design)
 
 ; View the results
