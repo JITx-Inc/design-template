@@ -1,5 +1,5 @@
 ; ====================
-; A number of helpful functions to check your designs, export to CAD, 
+; A number of helpful functions to check your designs, export to CAD,
 ; update your design in CAD, etc.
 ; ====================
 #use-added-syntax(jitx)
@@ -9,6 +9,21 @@ defpackage helpers :
   import jitx/commands
   import ocdb/utils/checks
   import ocdb/utils/generic-components
+
+; ==============
+; Initialization
+; ==============
+public defn initalize-helpers () :
+  set-bom-vendors(ocdb/utils/design-vars/APPROVED-DISTRIBUTOR-LIST)
+  set-bom-design-quantity(ocdb/utils/design-vars/DESIGN-QUANTITY)
+
+; ============
+; setup-design
+; ============
+public defn setup-design (name:String, board:Board, -- rules:Rules|False = false) :
+  set-current-design(name)
+  set-board(board)
+  match(rules:Rules) : set-rules(rules)
 
 ; =====================
 ; Run the design checks
@@ -44,6 +59,4 @@ public defn update-design () :
 ; Export BOM to tsv
 ; =================
 public defn export-bill-of-materials () :
-  set-bom-vendors(ocdb/utils/design-vars/APPROVED-DISTRIBUTOR-LIST)
-  set-bom-design-quantity(ocdb/utils/design-vars/DESIGN-QUANTITY)
   export-bom()
