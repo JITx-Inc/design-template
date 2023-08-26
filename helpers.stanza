@@ -10,20 +10,22 @@ defpackage helpers :
   import ocdb/utils/checks
   import ocdb/utils/generic-components
 
-; ==============
-; Initialization
-; ==============
-public defn initalize-helpers () :
-  set-bom-vendors(ocdb/utils/design-vars/APPROVED-DISTRIBUTOR-LIST)
-  set-bom-design-quantity(ocdb/utils/design-vars/DESIGN-QUANTITY)
-
 ; ============
 ; setup-design
 ; ============
-public defn setup-design (name:String, board:Board, -- rules:Rules|False = false) :
+public defn setup-design (name:String, board:Board
+                          --
+                          rules:Rules|False = false
+                          vendors:Tuple<String|AuthorizedVendor>|False = false
+                          quantity:Int|False = false) :
   set-current-design(name)
   set-board(board)
-  match(rules:Rules) : set-rules(rules)
+  set-rules $ match(rules:Rules) : rules
+  else : ocdb/utils/defaults/default-rules
+  set-bom-vendors $ match(vendors:Tuple<String|AuthorizedVendor>) : vendors
+  else : ocdb/utils/design-vars/APPROVED-DISTRIBUTOR-LIST
+  set-bom-design-quantity $ match(quantity:Int) : quantity
+  else : ocdb/utils/design-vars/DESIGN-QUANTITY
 
 ; =====================
 ; Run the design checks

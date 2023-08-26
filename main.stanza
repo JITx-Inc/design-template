@@ -7,9 +7,6 @@ defpackage main :
   import ocdb/utils/generic-components
   import helpers
 
-; Initialization
-initalize-helpers()
-
 ; Define the shape/size of the board
 val board-shape = RoundedRectangle(30.0, 18.5, 0.25)
 
@@ -27,13 +24,14 @@ pcb-module my-design :
   inst version-label  : ocdb/artwork/board-text/version-silkscreen("Version 0.0")
   place(version-label) at loc(0.0, height(board-shape) / 2.0 - 1.0) on Bottom
 
-; Set the design name  - a directory with this name will be generated under the "designs" directory
-;     the board        - a Board object
-;     [optional] rules - the PCB design rules
+; Set the design name     - a directory with this name will be generated under the "designs" directory
+;     the board           - a Board object
+;     [optional] rules    - the PCB design rules (if not givn default rules will be used)
+;     [optional] vendors  - Strings or AuthorizedVendors (if not give default vendors will be used)
+;     [optional] quantity - Minimum stock quantity the vendor should carry (if not give default quantity will be used)
 setup-design(
   "jitx-design",
-  ocdb/utils/defaults/default-board(ocdb/manufacturers/stackups/jlcpcb-jlc2313, board-shape),
-  rules = ocdb/manufacturers/rules/jlcpcb-rules
+  ocdb/utils/defaults/default-board(ocdb/manufacturers/stackups/jlcpcb-jlc2313, board-shape)
 )
 
 ; Set the schematic sheet size
