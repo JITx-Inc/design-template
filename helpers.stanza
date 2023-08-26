@@ -15,17 +15,14 @@ defpackage helpers :
 ; ============
 public defn setup-design (name:String, board:Board
                           --
-                          rules:Rules|False = false
-                          vendors:Tuple<String|AuthorizedVendor>|False = false
-                          quantity:Int|False = false) :
+                          rules:Rules = ocdb/utils/defaults/default-rules
+                          vendors:Tuple<String|AuthorizedVendor> = ocdb/utils/design-vars/APPROVED-DISTRIBUTOR-LIST
+                          quantity:Int = ocdb/utils/design-vars/DESIGN-QUANTITY) :
   set-current-design(name)
   set-board(board)
-  set-rules $ match(rules:Rules) : rules
-  else : ocdb/utils/defaults/default-rules
-  set-bom-vendors $ match(vendors:Tuple<String|AuthorizedVendor>) : vendors
-  else : ocdb/utils/design-vars/APPROVED-DISTRIBUTOR-LIST
-  set-bom-design-quantity $ match(quantity:Int) : quantity
-  else : ocdb/utils/design-vars/DESIGN-QUANTITY
+  set-rules(rules)
+  set-bom-vendors(vendors)
+  set-bom-design-quantity(quantity)
 
 ; =====================
 ; Run the design checks
