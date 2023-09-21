@@ -38,7 +38,9 @@ public defn run-check-on-design (circuit:Instantiable) :
 public defn export-to-cad () :
   set-paper(ANSI-A4)
   set-export-backend(`altium) ; set the CAD software for export to be altium (also supported: `kicad)
-  export-cad()
+  export-cad([
+    "vendor_part_numbers.lcsc" => "LCSC"
+  ])
 
 ; ====================
 ; Export design to CAD
