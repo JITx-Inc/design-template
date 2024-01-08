@@ -17,12 +17,16 @@ public defn setup-design (name:String, board:Board
                           --
                           rules:Rules = ocdb/utils/defaults/default-rules
                           vendors:Tuple<String|AuthorizedVendor> = ocdb/utils/design-vars/APPROVED-DISTRIBUTOR-LIST
-                          quantity:Int = ocdb/utils/design-vars/DESIGN-QUANTITY) :
+                          quantity:Int = ocdb/utils/design-vars/DESIGN-QUANTITY
+                          bom-columns:Tuple<BOMColumn> = ocdb/utils/design-vars/BOM-COLUMNS) :
   set-current-design(name)
   set-board(board)
   set-rules(rules)
   set-bom-vendors(vendors)
   set-bom-design-quantity(quantity)
+  set-bom-columns(bom-columns)
+  set-paper(ANSI-A4)
+  set-export-backend(`altium) ; set the CAD software for export to be altium (also supported: `kicad)
 
 ; =====================
 ; Run the design checks
@@ -36,8 +40,6 @@ public defn run-check-on-design (circuit:Instantiable) :
 ; Actual Export design
 ; ====================
 public defn export-to-cad () :
-  set-paper(ANSI-A4)
-  set-export-backend(`altium) ; set the CAD software for export to be altium (also supported: `kicad)
   export-cad([
     "vendor_part_numbers.lcsc" => "LCSC"
   ])
