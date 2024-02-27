@@ -23,7 +23,6 @@ pcb-module my-design :
   ; Write the board version on silkscreen
   inst version-label  : ocdb/artwork/board-text/version-silkscreen("Version 0.0")
   place(version-label) at loc(0.0, height(board-shape) / 2.0 - 1.0) on Bottom
-  do-not-populate(version-label)
 
 ; Set the design name     - a directory with this name will be generated under the "designs" directory
 ;     the board           - a Board object
