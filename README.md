@@ -29,7 +29,7 @@ This repo will keep your library code in step with your design using git submodu
 
 ```bash
 cd open-components-database
-git checkout master
+git checkout main
 git pull
 ```
 
