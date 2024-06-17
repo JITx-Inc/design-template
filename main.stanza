@@ -44,7 +44,7 @@ set-main-module(my-design)
 ; run-check-on-design(my-design)
 
 ; View the results
-view-board()
-view-schematic()
 view-design-explorer()
 view-bom(BOM-STD)
+view-board()
+view-schematic()
