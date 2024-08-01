@@ -13,9 +13,9 @@ val board-shape = RoundedRectangle(30.0, 18.5, 0.25)
 ; Module to run as a design
 pcb-module my-design :
   ; define some pins/ports
-  pin gnd
-  pin power-5v
-  pin signal
+  port gnd
+  port power-5v
+  port signal
 
   ; Create a 10k resistor component
   res-strap(power-5v, signal, 10.0e3)
