@@ -15,13 +15,13 @@ defpackage helpers :
 ; ============
 public defn setup-design (name:String, board:Board
                           --
-                          rules:Rules = ocdb/utils/defaults/default-rules
+                          rules:Rules|False = false
                           vendors:Tuple<String|AuthorizedVendor> = ocdb/utils/design-vars/APPROVED-DISTRIBUTOR-LIST
                           quantity:Int = ocdb/utils/design-vars/DESIGN-QUANTITY
                           bom-columns:Tuple<BOMColumn> = ocdb/utils/design-vars/BOM-COLUMNS) :
   set-current-design(name)
   set-board(board)
-  set-rules(rules)
+  match(rules:Rules) : (set-rules(rules))
   set-bom-vendors(vendors)
   set-bom-design-quantity(quantity)
   set-bom-columns(bom-columns)
