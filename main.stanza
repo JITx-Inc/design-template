@@ -35,7 +35,7 @@ setup-design(
 )
 
 ; Set the schematic sheet size
-set-paper(ANSI-A)
+set-paper(ISO-A4)
 
 ; Set the top level module (the module to be compile into a schematic and PCB)
 set-main-module(my-design)
