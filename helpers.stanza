@@ -25,7 +25,7 @@ public defn setup-design (name:String, board:Board
   set-bom-vendors(vendors)
   set-bom-design-quantity(quantity)
   set-bom-columns(bom-columns)
-  set-paper(ANSI-A4)
+  set-paper(ISO-A4)
   set-use-layout-groups()
   set-export-backend(`altium) ; set the CAD software for export to be altium (also supported: `kicad)
 
