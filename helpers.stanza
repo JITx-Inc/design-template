@@ -28,6 +28,7 @@ public defn setup-design (name:String, board:Board
   set-bom-design-quantity(quantity)
   set-bom-columns(bom-columns)
   set-paper(paper-size)
+
   set-use-layout-groups()
   set-export-backend(`altium) ; set the CAD software for export to be altium (also supported: `kicad)
 
