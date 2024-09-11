@@ -18,14 +18,17 @@ public defn setup-design (name:String, board:Board
                           rules:Rules|False = false
                           vendors:Tuple<String|AuthorizedVendor> = ocdb/utils/design-vars/APPROVED-DISTRIBUTOR-LIST
                           quantity:Int = ocdb/utils/design-vars/DESIGN-QUANTITY
-                          bom-columns:Tuple<BOMColumn> = ocdb/utils/design-vars/BOM-COLUMNS) :
+                          bom-columns:Tuple<BOMColumn> = ocdb/utils/design-vars/BOM-COLUMNS
+                          paper-size:Paper = ISO-A4
+                          ) :
   set-current-design(name)
   set-board(board)
   match(rules:Rules) : (set-rules(rules))
   set-bom-vendors(vendors)
   set-bom-design-quantity(quantity)
   set-bom-columns(bom-columns)
-  set-paper(ISO-A4)
+  set-paper(paper-size)
+
   set-use-layout-groups()
   set-export-backend(`altium) ; set the CAD software for export to be altium (also supported: `kicad)
 
