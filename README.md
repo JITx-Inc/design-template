@@ -25,21 +25,6 @@ jitx repl design-generator.stanza
 
 # Library Management
 
-This repo will keep your library code in step with your design using git submodules. For managing the version of `open-components-database` (OCDB), you must update it manually using Git:
+This repo will keep your library code in step with your design using the SLM package manager. You can look at the `slm.toml` file to see which libraries are being used and their versions. To update your libraries to the latest versions, you can run `slm update` in the terminal. This will fetch and install the most recent versions of the libraries specified in your `slm.toml` file.
 
-```bash
-cd open-components-database
-git checkout main
-git pull
-```
-
-You can also add your own design libraries and link them in by editing the `stanza.proj` file to include them. 
-
-
-# Additional Resources:
-
-- [Your first JITX design](https://docs.jitx.com/tutorials/quickstart-1.html)
-- [JITX Patterns Cheat Sheet](https://docs.jitx.com/reference/jitx-cheat-sheet.html)
-- [Stanza Cheat Sheet](https://docs.jitx.com/reference/stanza.html)
-- [Stanza By Example](http://lbstanza.org/stanzabyexample.html)
-- [JITX Reference](https://docs.jitx.com/reference/SUMMARY.html)
+You can also add your own design libraries and link them in by editing the `slm.toml` file to include them.
