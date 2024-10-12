@@ -9,6 +9,7 @@ defpackage helpers :
   import jitx/commands
   import jitx/parts
 
+  import board
 
 ; ============
 ; setup-part-search
@@ -38,7 +39,7 @@ public defn setup-part-query (--
 ; ============
 public defn setup-design (name:String, board:Board
                           --
-                          rules:Rules|False = false
+                          rules:Rules|False = jlc-pcb/rules/multi_1oz/jlcpcb-rules-multi-1oz
                           vendors:Tuple<String|AuthorizedVendor> = jitx/parts/legacy-ocdb-design-vars/APPROVED-DISTRIBUTOR-LIST
                           quantity:Int = jitx/parts/legacy-ocdb-design-vars/DESIGN-QUANTITY
                           bom-columns:Tuple<BOMColumn> = jitx/parts/legacy-ocdb-design-vars/BOM-COLUMNS

@@ -5,7 +5,9 @@ defpackage main :
   import jitx
   import jitx/commands
   import jitx/parts
+  import board
   import helpers
+  import jsl/symbols/net-symbols
 
 ; Define the shape/size of the board
 val board-shape = RoundedRectangle(30.0, 18.5, 0.25)
@@ -14,25 +16,29 @@ val board-shape = RoundedRectangle(30.0, 18.5, 0.25)
 pcb-module my-design :
   ; define some pins/ports
   port gnd
-  port power-5v
+  port vdd
   port signal
 
-  ; Create a 10k resistor component
-  insert-resistor(power-5v, signal, res-query, resistance = 10.0e3)
-  insert-capacitor(power-5v, signal, cap-query, capacitance = 100.0e-9)
+  net GND (gnd)
+  net VDD (vdd)
+
+  ; Instantiate and connect a 10k resistor component between vdd and signal
+  insert-resistor(vdd, signal, res-query, resistance = 10.0e3)
+  ; Instantiate and connect a 100nF capacitor component between vdd and gnd
+  insert-capacitor(vdd, gnd, cap-query, capacitance = 100.0e-9)
+
+  ; schematic symbols
+  symbol(GND) = GND-SYMB
+  symbol(VDD) = PWR-SYMB
 
   ; Write the board version on silkscreen
   inst version-label  : ocdb/artwork/board-text/version-silkscreen("Version 0.0")
   place(version-label) at loc(0.0, height(board-shape) / 2.0 - 1.0) on Bottom
 
-; Set the design name     - a directory with this name will be generated under the "designs" directory
-;     the board           - a Board object
-;     [optional] rules    - the PCB design rules (if not givn default rules will be used)
-;     [optional] vendors  - Strings or AuthorizedVendors (if not give default vendors will be used)
-;     [optional] quantity - Minimum stock quantity the vendor should carry (if not give default quantity will be used)
-setup-design(
-  "jitx-design",
-  ocdb/utils/defaults/default-board(ocdb/manufacturers/stackups/jlcpcb-jlc2313, board-shape)
+; Set the :
+;     design-name     - a directory with this name will be created in the "designs" directory
+;     board           - a Board object representing the stackup, rules and board shape for a particular design
+setup-design("jitx-design", this-board(board-shape)
 )
 
 ; Set the top level module (the module to be compile into a schematic and PCB)

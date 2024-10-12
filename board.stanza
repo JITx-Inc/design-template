@@ -1,0 +1,17 @@
+; ====================
+; Setup the board information using https://github.com/JITx-Inc/jlc-pcb.git
+; ====================
+#use-added-syntax(jitx)
+defpackage board :
+  import core
+  import jitx
+  import jitx/commands
+  import jitx/parts
+
+; Creates a pcb-board with a typical JLCPCB stackup given board outline.
+public pcb-board this-board (outline:Shape) :
+  stackup = jlc-pcb/stackups/JLC04161H-7628/stackup
+  boundary = outline
+  signal-boundary = outline
+  vias = [jlc-pcb/stackups/vias/std-via-preferred]
+
