@@ -8,6 +8,11 @@ defpackage board :
   import jitx/commands
   import jitx/parts
 
+
+public defn setup-my-board (outline:Shape) :
+  set-board(this-board(outline))
+  set-rules(jlc-pcb/rules/multi_1oz/jlcpcb-rules-multi-1oz)
+
 ; Creates a pcb-board with a typical JLCPCB stackup given board outline.
 public pcb-board this-board (outline:Shape) :
   stackup = jlc-pcb/stackups/JLC04161H-7628/stackup

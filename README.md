@@ -12,15 +12,7 @@ In a terminal window on your machine, clone your repository by typing `git clone
 git clone --recursive git@github.com:<username>/<repository>.git .
 ```
 
-Open VSCode and select `File` then `Open Folder...` and open the folder location of the repository. Setting this directory in VSCode allows features like Go-to definition and Autocomplete to work.
-
-In VSCode, select `Terminal` then `New Terminal`
-
-In the terminal window in VSCode, type:
-
-```
-jitx repl design-generator.stanza
-```
+Open VSCode and select `File` then `Open Folder...` and open the folder location of the repository. Setting this directory in VSCode allows features like Go-to definition and Autocomplete to work. You can now open the `main.stanza` file in a VSCode editing pane and press `<Ctrl><Enter>` to run the template code.
 
 
 # Library Management

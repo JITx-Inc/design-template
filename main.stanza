@@ -5,7 +5,7 @@ defpackage main :
   import jitx
   import jitx/commands
   import jitx/parts
-  import board
+
   import helpers
   import jsl/symbols/net-symbols
 
@@ -21,25 +21,21 @@ pcb-module my-design :
 
   net GND (gnd)
   net VDD (vdd)
+  net SIGNAL (signal)
 
   ; Instantiate and connect a 10k resistor component between vdd and signal
-  insert-resistor(vdd, signal, res-query, resistance = 10.0e3)
+  insert-resistor(VDD, SIGNAL, res-query, resistance = 10.0e3)
   ; Instantiate and connect a 100nF capacitor component between vdd and gnd
-  insert-capacitor(vdd, gnd, cap-query, capacitance = 100.0e-9)
+  insert-capacitor(VDD, GND, cap-query, capacitance = 100.0e-9)
 
   ; schematic symbols
   symbol(GND) = GND-SYMB
   symbol(VDD) = PWR-SYMB
 
-  ; Write the board version on silkscreen
-  inst version-label  : ocdb/artwork/board-text/version-silkscreen("Version 0.0")
-  place(version-label) at loc(0.0, height(board-shape) / 2.0 - 1.0) on Bottom
-
 ; Set the :
 ;     design-name     - a directory with this name will be created in the "designs" directory
 ;     board           - a Board object representing the stackup, rules and board shape for a particular design
-setup-design("jitx-design", this-board(board-shape)
-)
+setup-design("jitx-design", board-shape)
 
 ; Set the top level module (the module to be compile into a schematic and PCB)
 set-main-module(my-design)
@@ -47,7 +43,8 @@ set-main-module(my-design)
 ; View the results
 ; take a look at the BOM that was generated
 view-bom(BOM-STD)
-; view the board that was created
-view-board()
 ; examine the schematic that was auto-generated
 view-schematic()
+; view the board that was created
+view-board()
+
