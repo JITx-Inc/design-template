@@ -1,3 +1,6 @@
-include "open-components-database/stanza.proj"
+include? ".slm/stanza.proj"
+pkg-cache: ".slm/pkg-cache"
+
 package main defined-in "main.stanza"
+package board defined-in "board.stanza"
 package helpers defined-in "helpers.stanza"
