@@ -11,5 +11,3 @@ designs/**/design-info/physical-layout.design~
 designs/
 # part cache does not need to be stored in Git
 parts-db
-#
-.slm
