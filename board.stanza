@@ -8,6 +8,8 @@ defpackage board :
   import jitx/commands
   import jitx/parts
 
+  import jsl
+
 
 public defn setup-my-board (outline:Shape) :
   set-board(this-board(outline))
@@ -15,7 +17,7 @@ public defn setup-my-board (outline:Shape) :
 
 ; Creates a pcb-board with a typical JLCPCB stackup given board outline.
 public pcb-board this-board (outline:Shape) :
-  stackup = jlc-pcb/stackups/JLC04161H-7628/stackup
+  stackup = create-pcb-stackup(jlc-pcb/stackups/JLC04161H-7628/stackup-gen)
   boundary = outline
   signal-boundary = outline
   vias = [jlc-pcb/stackups/vias/std-via-preferred]
