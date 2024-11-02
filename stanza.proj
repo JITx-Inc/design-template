@@ -1,5 +1,3 @@
-include? ".slm/stanza.proj"
-pkg-cache: ".slm/pkg-cache"
 
 package main defined-in "main.stanza"
 package board defined-in "board.stanza"
