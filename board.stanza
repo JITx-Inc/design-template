@@ -7,9 +7,7 @@ defpackage board :
   import jitx
   import jitx/commands
   import jitx/parts
-
-  import jsl
-
+  import jsl/layerstack
 
 public defn setup-my-board (outline:Shape) :
   set-board(this-board(outline))
@@ -21,4 +19,3 @@ public pcb-board this-board (outline:Shape) :
   boundary = outline
   signal-boundary = outline
   vias = [jlc-pcb/stackups/vias/std-via-preferred]
-
