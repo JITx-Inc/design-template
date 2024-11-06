@@ -7,8 +7,6 @@ designs/**/cache/
 designs/**/design-info/stable.design.backup*
 designs/**/design-info/physical-layout.design~
 
-# Let's also not keep the designs/ directory in Git 
-designs/
 # part cache does not need to be stored in Git
 parts-db
 #
