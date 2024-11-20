@@ -35,7 +35,8 @@ pcb-module my-design :
 ; Set the :
 ;     design-name     - a directory with this name will be created in the "designs" directory
 ;     board           - a Board object representing the stackup, rules and board shape for a particular design
-setup-design("jitx-design", board-shape)
+;     signal-shrink   - a distance in mm to pull back copper signals from the board edge
+setup-design("jitx-design", board-shape, signal-shrink = 0.5)
 
 ; Set the top level module (the module to be compile into a schematic and PCB)
 set-main-module(my-design)

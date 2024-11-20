@@ -9,8 +9,7 @@ defpackage helpers :
   import jitx/commands
   import jitx/parts
 
-  import board
-
+  import jsl
 ; ==================
 ; setup-part-search
 ; ==================
@@ -60,18 +59,25 @@ public defn setup-bill-of-materials (qty:Int, vendors:Tuple<String|AuthorizedVen
   set-bom-vendors(vendors)
   set-bom-design-quantity(qty)
 
+; ====================
+; Setup the board information using https://github.com/JITx-Inc/jlc-pcb.git
+; ====================
+public val substrate = jlc-pcb/stackups/JLC04161H-1080/JLC04161H-1080()
+
 ; ============
 ; setup-design
 ; ============
 public defn setup-design (name:String, board-shape:Shape
                           --
+                          signal-shrink:Double = ?
                           vendors:Tuple<String|AuthorizedVendor> = jsl/design/settings/APPROVED-DISTRIBUTOR-LIST
                           quantity:Int = jsl/design/settings/DESIGN-QUANTITY
                           paper-size:Paper = ANSI-A
                           ) :
   set-current-design(name)
   setup-part-query(vendors = vendors)
-  setup-my-board(board-shape)
+  set-board(make-board-def(substrate, board-shape, signal-shrink = signal-shrink))
+  set-rules(jlc-pcb/rules/multi_1oz/jlcpcb-rules-multi-1oz)
   setup-bill-of-materials(quantity, vendors)
   set-paper(paper-size)
   set-use-layout-groups()
