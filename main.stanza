@@ -48,6 +48,5 @@ view-bom(BOM-STD)
 view-schematic()
 ; view the board that was created
 view-board()
-view-design-explorer()
 
 
