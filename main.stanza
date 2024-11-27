@@ -24,9 +24,9 @@ pcb-module my-design :
   net SIGNAL (signal)
 
   ; Instantiate and connect a 10k resistor component between vdd and signal
-  insert-resistor(VDD, SIGNAL, res-query, resistance = 10.0e3)
+  insert-resistor(VDD, SIGNAL, R-query, resistance = 10.0e3)
   ; Instantiate and connect a 100nF capacitor component between vdd and gnd
-  insert-capacitor(VDD, GND, cap-query, capacitance = 100.0e-9)
+  insert-capacitor(VDD, GND, C-query, capacitance = 100.0e-9)
 
   ; schematic symbols
   symbol(GND) = GND-SYMB
@@ -48,4 +48,5 @@ view-bom(BOM-STD)
 view-schematic()
 ; view the board that was created
 view-board()
+
 
