@@ -15,25 +15,35 @@ defpackage helpers :
 ; ==================
 jsl/design/settings/OPERATING-TEMPERATURE = min-max(0.0 50.0)
 
-public var res-query
-public var cap-query
 
-public defn setup-part-query (--
-                              vendors:Tuple<String|AuthorizedVendor> = jsl/design/settings/APPROVED-DISTRIBUTOR-LIST
-                             ) :
+public var R-query
+public var C-query
 
-  var general-query = BaseQuery(sellers! = vendors)
-  var smd-query = add(general-query,
-                        mounting = "smd"
-                        case = valid-smd-pkgs("0402"),
-                        operating-temperature = jsl/design/settings/OPERATING-TEMPERATURE
-                      )
-  res-query = ResistorQuery(smd-query)
-  cap-query = CapacitorQuery(smd-query,
-                              type = "ceramic",
-                              temperature-coefficient_code = ["X7R" "X5R"],
-                              rated-voltage = 6.0,
-                            )
+public defn setup-part-query (
+  --
+  vendors:Tuple<String|AuthorizedVendor> = jsl/design/settings/APPROVED-DISTRIBUTOR-LIST
+  ) :
+
+  set-global-query-defaults!(
+    min-stock = 1,
+    mounting = "smd",
+    case = ["0402", "0603"],
+    sellers! = vendors
+    )
+
+  ; Must instantiate after setting global defaults.
+  R-query = ResistorQuery(
+    precision = (1 %)
+  )
+  set-default-resistor-query!(R-query)
+
+  C-query = CapacitorQuery(
+    type = "ceramic",
+    temperature-coefficient_code = ["X7R", "X5R"],
+    precision = (10 %),
+    rated-voltage = AtLeast(6.0)
+  )
+  set-default-capacitor-query!(C-query)
 
 ; =================
 ; Setup BOM stuff
