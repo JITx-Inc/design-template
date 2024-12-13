@@ -26,18 +26,23 @@ public defn setup-part-query (
 
   set-global-query-defaults!(
     min-stock = 1,
-    mounting = "smd",
-    case = ["0402", "0603"],
     sellers! = vendors
     )
 
+  val all-cats = BaseQuery(
+    mounting = "smd",
+    case = ["0402", "0603"],
+  )
+
   ; Must instantiate after setting global defaults.
   R-query = ResistorQuery(
+    all-cats,
     precision = (1 %)
   )
   set-default-resistor-query!(R-query)
 
   C-query = CapacitorQuery(
+    all-cats,
     type = "ceramic",
     temperature-coefficient_code = ["X7R", "X5R"],
     precision = (10 %),
