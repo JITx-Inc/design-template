@@ -32,6 +32,7 @@ public defn setup-part-query (
   val all-cats = BaseQuery(
     mounting = "smd",
     case = ["0402", "0603"],
+    sort! = SortKey(area = Increasing)
   )
 
   ; Must instantiate after setting global defaults.
