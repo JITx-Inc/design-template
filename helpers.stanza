@@ -46,7 +46,7 @@ public defn setup-part-query (
     all-cats,
     type = "ceramic",
     temperature-coefficient_code = ["X7R", "X5R"],
-    precision = (10 %),
+    tolerance_max = 0.2,
     rated-voltage = AtLeast(6.0)
   )
   set-default-capacitor-query!(C-query)
