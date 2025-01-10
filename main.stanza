@@ -7,28 +7,30 @@ defpackage main :
   import jitx/parts
 
   import helpers
-  import jsl/symbols/net-symbols
+  import jsl
 
 ; Define the shape/size of the board
 val board-shape = RoundedRectangle(30.0, 18.5, 0.25)
 
 ; Module to run as a design
 pcb-module my-design :
-  ; define some pins/ports
+  ; define some case-sensitive pins/ports
   port gnd
   port vdd
   port signal
 
+  ; Create nets for the pins/ports which will be used to connect component pins 
+  ; Note that the net names are case-sensitive as well.
   net GND (gnd)
   net VDD (vdd)
   net SIGNAL (signal)
 
-  ; Instantiate and connect a 10k resistor component between vdd and signal
+  ; Instantiate and connect a 10k resistor component between the named nets VDD and SIGNAL
   insert-resistor(VDD, SIGNAL, R-query, resistance = 10.0e3)
-  ; Instantiate and connect a 100nF capacitor component between vdd and gnd
+  ; Instantiate and connect a 100nF capacitor component between the named nets VDD and GND
   insert-capacitor(VDD, GND, C-query, capacitance = 100.0e-9)
 
-  ; schematic symbols
+  ; Attach schematic symbols to the nets (from JSL)
   symbol(GND) = GND-SYMB
   symbol(VDD) = PWR-SYMB
 
